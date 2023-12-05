@@ -8,9 +8,7 @@
 import Foundation
  
 struct Quiz{
-    var questions: [[String: Any]] = [
-        
-        }
-    
-    ]
+    var question: String
+    var answer: String
+
 }
