@@ -27,6 +27,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view.
         
         question.text = quiz[index].question
@@ -34,16 +35,35 @@ class ViewController: UIViewController {
     
     
 
+    @IBAction func replay(_ sender: UIButton) {
+        
+    index = 0
+        question.text = quiz[index].question
+        nextButton.isHidden = false
+    
+        
+        
+    }
     @IBAction func play(_ sender: UIButton) {
         
+        answerTextField.text = ""
+        answer.text  = " "
         index += 1
+        if index < quiz.count{
+            question.text =  quiz[index].question
+        }
         
+        if index == quiz.count
+        {
+            nextButton.isHidden = true
+        }
        
     }
     @IBAction func checkAnswer(_ sender: UIButton) {
         if answerTextField.text == quiz[index].answer
         {
-            answer.text = "Correct"
+            answer.text = "Correct!"
+            score += 1
         }
         
         else{
@@ -51,6 +71,7 @@ class ViewController: UIViewController {
             answer.text = "Incorrect"
 
         }
+       
         
     }
     
