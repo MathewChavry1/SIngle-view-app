@@ -10,6 +10,10 @@ import UIKit
 class ViewController: UIViewController {
 
     
+    @IBOutlet weak var finalfinal: UILabel!
+    @IBOutlet weak var Finalscore: UIButton!
+    @IBOutlet weak var sc: UILabel!
+    
     @IBOutlet weak var question: UILabel!
     
     @IBOutlet weak var answerTextField: UITextField!
@@ -29,7 +33,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
+        Finalscore.isHidden = true
+
         question.text = quiz[index].question
     }
     
@@ -44,6 +49,7 @@ class ViewController: UIViewController {
         
         
     }
+
     @IBAction func play(_ sender: UIButton) {
         
         answerTextField.text = ""
@@ -57,13 +63,17 @@ class ViewController: UIViewController {
         {
             nextButton.isHidden = true
         }
-       
+        if index == quiz.count {
+            Finalscore.isHidden = false
+        }
     }
+  
     @IBAction func checkAnswer(_ sender: UIButton) {
-        if answerTextField.text == quiz[index].answer
+        if answerTextField.text?.lowercased() == quiz[index].answer
         {
             answer.text = "Correct!"
             score += 1
+            sc.text = String(score)
         }
         
         else{
